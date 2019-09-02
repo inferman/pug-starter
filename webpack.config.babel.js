@@ -15,10 +15,6 @@ export default {
         exclude: /(node_modules)/,
         use: ["babel-loader", "eslint-loader"]
       },
-      // {
-      //   test: /\.css$/,
-      //   use: ['style-loader', 'css-loader'],
-      // },
       {
         test: /\.(png|svg|jpg|gif)$/,
         use: ["file-loader"]
@@ -44,12 +40,16 @@ export default {
             }
           }
         ]
+      },
+      {
+        test: /\.pug$/,
+        use: ["pug-loader"]
       }
     ]
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: path.join(__dirname, "index.html"),
+      template: path.join(__dirname, "./src/index.pug"),
       favicon: "assets/img/favicon.png"
     }),
     new MiniCssExtractPlugin({
